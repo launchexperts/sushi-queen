@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sushi Queen — Fresh Sushi, Made to Take Away</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --teal-900: #07221f;
+    --teal-800: #0c302c;
+    --teal-700: #114038;
+    --teal-600: #1a6058;
+    --teal-500: #2a9d8f;
+    --teal-300: #7fc9bf;
+    --coral: #ff6f4d;
+    --coral-dark: #e85733;
+    --cream: #f7f1e6;
+    --cream-dark: #ece2cf;
+    --ink: #16302c;
+    --muted: #5f726e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; line-height: 1.12; }
+
+  a { text-decoration: none; color: inherit; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  .eyebrow {
+    font-size: 12.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px; height: 1.5px;
+    background: var(--coral);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 15px 28px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    border: none;
+  }
+  .btn-coral {
+    background: var(--coral);
+    color: #fff;
+    box-shadow: 0 12px 26px -10px rgba(255,111,77,.7);
+  }
+  .btn-coral:hover { transform: translateY(-2px); background: var(--coral-dark); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(247,241,230,.32);
+  }
+  .btn-ghost:hover { border-color: var(--cream); transform: translateY(-2px); }
+  .btn-dark {
+    background: var(--teal-800);
+    color: var(--cream);
+  }
+  .btn-dark:hover { transform: translateY(-2px); background: var(--teal-700); }
+
+  /* ---------- Nav ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(7,34,31,.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(127,201,191,.14);
+  }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 78px; }
+  .logo { display: flex; align-items: center; gap: 11px; }
+  .logo-mark {
+    width: 38px; height: 38px;
+    display: grid; place-items: center;
+    background: var(--teal-500);
+    border-radius: 11px;
+  }
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--cream);
+    letter-spacing: .2px;
+  }
+  .logo-text span { color: var(--teal-300); }
+  .nav-links { display: flex; gap: 34px; list-style: none; }
+  .nav-links a {
+    color: rgba(247,241,230,.78);
+    font-size: 14.5px; font-weight: 500;
+    transition: color .15s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-cta { display: flex; align-items: center; gap: 16px; }
+  .nav-phone { color: var(--teal-300); font-weight: 600; font-size: 14.5px; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background:
+      radial-gradient(900px 520px at 78% -8%, rgba(42,157,143,.30), transparent 60%),
+      radial-gradient(700px 480px at 8% 105%, rgba(255,111,77,.14), transparent 55%),
+      var(--teal-900);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 40px;
+    align-items: center;
+    padding: 76px 32px 96px;
+  }
+  .hero .eyebrow { color: var(--teal-300); }
+  .hero h1 {
+    color: var(--cream);
+    font-size: clamp(34px, 4.2vw, 54px);
+    margin: 22px 0 0;
+    text-wrap: balance;
+  }
+  .hero h1 em { font-style: italic; color: var(--coral); }
+  .hero p.lead {
+    color: rgba(247,241,230,.74);
+    font-size: 17px;
+    max-width: 440px;
+    margin: 22px 0 32px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-meta {
+    display: flex; gap: 30px; margin-top: 38px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(127,201,191,.16);
+  }
+  .hero-meta div { color: var(--cream); }
+  .hero-meta strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; display: block; font-weight: 700;
+  }
+  .hero-meta span { color: rgba(247,241,230,.6); font-size: 13px; }
+
+  /* hero art */
+  .hero-art { position: relative; display: grid; place-items: center; }
+  .platter {
+    width: 100%; max-width: 420px;
+    aspect-ratio: 1;
+    background: radial-gradient(circle at 50% 42%, #16463f 0%, #0c302c 70%);
+    border-radius: 50%;
+    border: 1px solid rgba(127,201,191,.2);
+    box-shadow: 0 40px 80px -30px rgba(0,0,0,.7), inset 0 2px 30px rgba(127,201,191,.08);
+    display: grid; place-items: center;
+    position: relative;
+  }
+  .platter::after {
+    content: "";
+    position: absolute; inset: 18px;
+    border-radius: 50%;
+    border: 1px dashed rgba(247,241,230,.35);
+    z-index: 2;
+  }
+  .platter { overflow: hidden; }
+  .platter img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---------- Floating garnish ---------- */
+  .float {
+    position: absolute;
+    pointer-events: none;
+    z-index: 5;
+    filter: drop-shadow(0 18px 22px rgba(0,0,0,.38));
+    animation: bob 8s ease-in-out infinite;
+    will-change: transform;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+    50%      { transform: translateY(-20px) rotate(var(--r, 0deg)); }
+  }
+  .crumb {
+    position: absolute;
+    width: 11px; height: 7px;
+    border-radius: 50%;
+    background: #d8c089;
+    pointer-events: none;
+    z-index: 4;
+    opacity: .9;
+  }
+  .crumb.dark { background: #6b4a26; }
+  .crumb.sm { width: 7px; height: 5px; }
+  @media (max-width: 760px) {
+    .float.hide-sm { display: none; }
+  }
+  .leaf {
+    position: absolute;
+    opacity: .9;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,.4));
+  }
+  .leaf-1 { top: -18px; left: -26px; transform: rotate(-18deg); }
+  .leaf-2 { bottom: 8px; right: -34px; transform: rotate(150deg); }
+  .badge-float {
+    position: absolute;
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 13px 17px;
+    box-shadow: 0 22px 40px -16px rgba(0,0,0,.55);
+    display: flex; align-items: center; gap: 11px;
+  }
+  .badge-float.tl { top: 10px; left: -14px; }
+  .badge-float.br { bottom: 18px; right: -10px; }
+  .badge-float .dot {
+    width: 34px; height: 34px; border-radius: 9px;
+    display: grid; place-items: center;
+    background: var(--teal-500); color: #fff; font-weight: 700;
+  }
+  .badge-float .dot.coral { background: var(--coral); }
+  .badge-float b { font-size: 14px; display: block; }
+  .badge-float small { color: var(--muted); font-size: 12px; }
+
+  /* ---------- Strip ---------- */
+  .strip {
+    background: var(--teal-800);
+    padding: 0;
+    position: relative;
+  }
+  .strip-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(127,201,191,.12);
+  }
+  .strip-item {
+    display: flex; gap: 16px; align-items: center;
+    padding: 30px 28px;
+    color: var(--cream);
+  }
+  .strip-item + .strip-item { border-left: 1px solid rgba(127,201,191,.12); }
+  .strip-ico {
+    width: 46px; height: 46px; flex: none;
+    border-radius: 12px;
+    background: rgba(42,157,143,.18);
+    display: grid; place-items: center;
+  }
+  .strip-item b { font-size: 15px; }
+  .strip-item p { font-size: 13px; color: rgba(247,241,230,.6); margin: 0; }
+
+  /* ---------- Section base ---------- */
+  section.pad { padding: 96px 0; position: relative; }
+  .sec-head { max-width: 620px; }
+  .sec-head h2 {
+    font-size: clamp(30px, 3.6vw, 44px);
+    margin: 14px 0 0;
+    color: var(--ink);
+  }
+  .sec-head.center { margin: 0 auto; text-align: center; }
+  .sec-head p { color: var(--muted); margin-top: 14px; font-size: 16px; }
+
+  /* ---------- Menu cards ---------- */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+    margin-top: 52px;
+  }
+  .roll {
+    background: #fff;
+    border-radius: 20px;
+    padding: 26px;
+    border: 1px solid var(--cream-dark);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .roll:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 50px -28px rgba(12,48,44,.4);
+  }
+  .roll-art {
+    height: 188px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: linear-gradient(160deg, #f0e8d6, #e4d8bf);
+    margin-bottom: 20px;
+  }
+  .roll-art img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform .5s ease;
+  }
+  .roll:hover .roll-art img { transform: scale(1.07); }
+  .roll .tag {
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--teal-500); font-weight: 700;
+  }
+  .roll h3 { font-size: 21px; margin: 7px 0 6px; }
+  .roll p { font-size: 14px; color: var(--muted); min-height: 42px; }
+  .roll-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid var(--cream-dark);
+  }
+  .price { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; }
+  .price small { font-size: 13px; color: var(--muted); font-weight: 400; }
+  .add {
+    width: 40px; height: 40px; border-radius: 11px;
+    background: var(--teal-700); color: #fff;
+    display: grid; place-items: center; border: none; cursor: pointer;
+    transition: background .15s, transform .15s;
+  }
+  .add:hover { background: var(--coral); transform: scale(1.06); }
+  .menu-cta { text-align: center; margin-top: 46px; }
+
+  /* ---------- Editorial split ---------- */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .split-art {
+    background: var(--teal-700);
+    border-radius: 26px;
+    aspect-ratio: 1.05;
+    display: grid; place-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .split-art::before {
+    content: "";
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(160deg, rgba(7,34,31,.10), rgba(7,34,31,.45));
+  }
+  .split-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .split h2 { font-size: clamp(28px, 3.4vw, 42px); margin: 14px 0 0; }
+  .split p { color: var(--muted); margin-top: 16px; font-size: 16px; }
+  .feature-list { list-style: none; margin: 26px 0 32px; display: grid; gap: 14px; }
+  .feature-list li { display: flex; gap: 13px; align-items: flex-start; font-size: 15px; }
+  .check {
+    width: 24px; height: 24px; flex: none; border-radius: 7px;
+    background: rgba(42,157,143,.16); color: var(--teal-600);
+    display: grid; place-items: center; font-weight: 700; font-size: 13px;
+  }
+
+  /* ---------- Steps ---------- */
+  .steps-sec { background: var(--teal-900); }
+  .steps-sec .eyebrow { color: var(--teal-300); }
+  .steps-sec .sec-head h2 { color: var(--cream); }
+  .steps-sec .sec-head p { color: rgba(247,241,230,.66); }
+  .steps {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+    margin-top: 54px;
+  }
+  .step {
+    background: var(--teal-800);
+    border: 1px solid rgba(127,201,191,.14);
+    border-radius: 20px;
+    padding: 34px 30px;
+  }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 700;
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--teal-500); color: #fff;
+    display: grid; place-items: center;
+  }
+  .step h3 { color: var(--cream); font-size: 22px; margin: 20px 0 8px; }
+  .step p { color: rgba(247,241,230,.66); font-size: 14.5px; }
+
+  /* ---------- Uber Eats banner ---------- */
+  .uber {
+    background: linear-gradient(120deg, var(--teal-600), var(--teal-700));
+    border-radius: 28px;
+    padding: 56px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .uber::before {
+    content: "";
+    position: absolute; right: -60px; top: -60px;
+    width: 320px; height: 320px; border-radius: 50%;
+    background: rgba(247,241,230,.06);
+  }
+  .uber h2 { color: var(--cream); font-size: clamp(28px,3.2vw,40px); }
+  .uber p { color: rgba(247,241,230,.8); margin-top: 14px; max-width: 420px; }
+  .uber-actions { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
+  .uber-art { display: grid; place-items: center; position: relative; z-index: 1; }
+  .ueats-card {
+    background: var(--cream);
+    border-radius: 18px;
+    padding: 22px;
+    width: 100%; max-width: 280px;
+    box-shadow: 0 30px 60px -24px rgba(0,0,0,.5);
+  }
+  .ueats-card .row { display: flex; align-items: center; gap: 12px; }
+  .ueats-logo {
+    background: #06241f; color: #fff; font-weight: 700;
+    padding: 6px 12px; border-radius: 8px; font-size: 13px;
+  }
+  .ueats-card .est { margin-left: auto; font-size: 13px; color: var(--muted); }
+  .ueats-card h4 { font-family: 'Playfair Display',serif; font-size: 19px; margin: 16px 0 4px; }
+  .ueats-card .stars { color: var(--coral); font-size: 14px; }
+  .ueats-bar {
+    margin-top: 16px; height: 42px; border-radius: 10px;
+    background: var(--teal-700); color: #fff;
+    display: grid; place-items: center; font-weight: 600; font-size: 14px;
+  }
+
+  /* ---------- Visit ---------- */
+  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .hours-card {
+    background: #fff; border: 1px solid var(--cream-dark);
+    border-radius: 20px; padding: 34px 36px;
+  }
+  .hours-card h3 { font-size: 22px; margin-bottom: 8px; }
+  .hours-row {
+    display: flex; justify-content: space-between;
+    padding: 11px 0; border-bottom: 1px dashed var(--cream-dark);
+    font-size: 14.5px;
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-row.today { color: var(--teal-600); font-weight: 700; }
+  .hours-row .open { color: var(--teal-500); font-weight: 600; }
+  .visit .info-line {
+    display: flex; gap: 13px; align-items: flex-start;
+    margin-top: 18px; font-size: 15px;
+  }
+  .visit .info-ico {
+    width: 38px; height: 38px; flex: none; border-radius: 10px;
+    background: rgba(42,157,143,.14); color: var(--teal-600);
+    display: grid; place-items: center;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--teal-900);
+    color: rgba(247,241,230,.7);
+    padding: 70px 0 34px;
+    position: relative;
+  }
+  .foot-grid {
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px;
+    padding-bottom: 46px;
+    border-bottom: 1px solid rgba(127,201,191,.14);
+  }
+  footer h5 {
+    color: var(--cream); font-size: 13px; letter-spacing: .12em;
+    text-transform: uppercase; margin-bottom: 16px; font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+  }
+  footer ul { list-style: none; display: grid; gap: 10px; }
+  footer ul a { font-size: 14px; color: rgba(247,241,230,.66); }
+  footer ul a:hover { color: var(--cream); }
+  .foot-about p { font-size: 14px; max-width: 280px; margin-top: 14px; }
+  .foot-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 26px; font-size: 13px; flex-wrap: wrap; gap: 12px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 940px) {
+    .hero-inner, .split, .visit, .uber { grid-template-columns: 1fr; }
+    .menu-grid, .steps, .strip-inner { grid-template-columns: 1fr; }
+    .strip-item + .strip-item { border-left: none; border-top: 1px solid rgba(127,201,191,.12); }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .hero-art { order: -1; }
+    .uber { padding: 38px; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 20px; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .hero-meta { flex-wrap: wrap; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#">
+        <span class="logo-mark">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M3 9l4 4 5-8 5 8 4-4-2 11H5L3 9z" fill="#07221f"/>
+          </svg>
+        </span>
+        <span class="logo-text">Sushi <span>Queen</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#visit">Visit Us</a></li>
+      </ul>
+      <div class="nav-cta">
+        <span class="nav-phone">☎ (03) 9123 4567</span>
+        <a class="btn btn-coral" href="#uber">Order on Uber Eats</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <h1>Fresh sushi,<br>made to <em>take away</em>.</h1>
+      <p class="lead">Hand-rolled every morning in your neighbourhood. Grab it from the counter, or have it delivered hot-fast to your door with Uber Eats.</p>
+      <div class="hero-actions">
+        <a class="btn btn-coral" href="#uber">
+          Order on Uber Eats
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#menu">View the Menu</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>12+</strong><span>Signature rolls</span></div>
+        <div><strong>15 min</strong><span>Average pickup</span></div>
+        <div><strong>4.8★</strong><span>Uber Eats rating</span></div>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <!-- bamboo leaves -->
+      <svg class="leaf leaf-1" width="120" height="90" viewBox="0 0 120 90" fill="none">
+        <path d="M10 80C30 50 70 22 116 8c-22 30-52 58-92 76-6 2-12-1-14-4z" fill="#2a9d8f"/>
+        <path d="M14 78C40 56 78 32 110 14" stroke="#1a6058" stroke-width="2"/>
+      </svg>
+      <svg class="leaf leaf-2" width="130" height="96" viewBox="0 0 130 96" fill="none">
+        <path d="M12 86C34 54 78 24 126 10c-24 32-58 62-100 80-7 3-12 0-14-4z" fill="#3bb3a4"/>
+        <path d="M16 84C44 60 84 34 118 16" stroke="#1a6058" stroke-width="2"/>
+      </svg>
+
+      <div class="platter">
+        <img src="images/hero.png" alt="An assorted platter of freshly made Sushi Queen sushi" />
+      </div>
+
+      <div class="badge-float tl">
+        <span class="dot">✓</span>
+        <span><b>Made fresh daily</b><small>No frozen, ever</small></span>
+      </div>
+      <div class="badge-float br">
+        <span class="dot coral">★</span>
+        <span><b>4.8 on Uber Eats</b><small>900+ reviews</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRIP ================= -->
+<div class="strip">
+  <img class="float hide-sm" src="images/float-nigiri-tuna.png?v=2" alt="" style="--r:14deg; bottom:-46px; right:14%; width:96px; animation-duration:8s; animation-delay:-1.5s;" />
+  <div class="wrap">
+    <div class="strip-inner">
+      <div class="strip-item">
+        <span class="strip-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7" stroke="#7fc9bf" stroke-width="2" stroke-linejoin="round"/></svg>
+        </span>
+        <div><b>Quick counter pickup</b><p>Ready in around 15 minutes</p></div>
+      </div>
+      <div class="strip-item">
+        <span class="strip-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 13h11V6H3v7zm11 0h4l3 4v3h-2M14 17H6" stroke="#7fc9bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="18" r="2" stroke="#7fc9bf" stroke-width="2"/><circle cx="18" cy="18" r="2" stroke="#7fc9bf" stroke-width="2"/></svg>
+        </span>
+        <div><b>Delivered via Uber Eats</b><p>Hot-fast to your door</p></div>
+      </div>
+      <div class="strip-item">
+        <span class="strip-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8c0-3 3-5 7-5M5 8c0 4 3 6 7 6M19 8c0-3-3-5-7-5M19 8c0 4-3 6-7 6" stroke="#7fc9bf" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <div><b>Locally sourced fish</b><p>Sustainable, premium grade</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MENU ================= -->
+<section class="pad" id="menu">
+  <img class="float hide-sm" src="images/float-maki.png?v=2" alt="" style="--r:-20deg; top:58px; left:-34px; width:128px; animation-duration:9.5s;" />
+  <img class="float hide-sm" src="images/float-nigiri-salmon.png?v=2" alt="" style="--r:15deg; bottom:96px; right:1.5%; width:116px; animation-duration:7.5s; animation-delay:-2s;" />
+  <span class="crumb dark" style="top:150px; left:8.5%;"></span>
+  <span class="crumb dark sm" style="top:138px; left:10.5%;"></span>
+  <span class="crumb dark sm" style="top:166px; left:7%;"></span>
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Counter favourites</span>
+      <h2>Our signature rolls</h2>
+      <p>A small, perfected menu. Every roll is cut to order so it reaches you at its freshest.</p>
+    </div>
+
+    <div class="menu-grid">
+      <!-- card 1 -->
+      <article class="roll">
+        <div class="roll-art">
+          <img src="images/menu-salmon.png" alt="Salmon avocado sushi roll" />
+        </div>
+        <span class="tag">Best seller</span>
+        <h3>Salmon Avocado</h3>
+        <p>Fresh salmon, creamy avocado and a whisper of wasabi mayo.</p>
+        <div class="roll-foot">
+          <span class="price">$9.50 <small>/ 8 pc</small></span>
+          <button class="add" aria-label="Add Salmon Avocado">+</button>
+        </div>
+      </article>
+      <!-- card 2 -->
+      <article class="roll">
+        <div class="roll-art">
+          <img src="images/menu-tuna.png" alt="Tuna nigiri sushi" />
+        </div>
+        <span class="tag">Classic</span>
+        <h3>Tuna Nigiri</h3>
+        <p>Line-caught tuna draped over hand-pressed seasoned rice.</p>
+        <div class="roll-foot">
+          <span class="price">$8.00 <small>/ 4 pc</small></span>
+          <button class="add" aria-label="Add Tuna Nigiri">+</button>
+        </div>
+      </article>
+      <!-- card 3 -->
+      <article class="roll">
+        <div class="roll-art">
+          <img src="images/menu-veggie.png" alt="Vegetarian garden crunch sushi roll" />
+        </div>
+        <span class="tag">Veggie</span>
+        <h3>Garden Crunch</h3>
+        <p>Cucumber, avocado, carrot and crispy tempura crumb.</p>
+        <div class="roll-foot">
+          <span class="price">$8.50 <small>/ 8 pc</small></span>
+          <button class="add" aria-label="Add Garden Crunch">+</button>
+        </div>
+      </article>
+      <!-- card 4 -->
+      <article class="roll">
+        <div class="roll-art">
+          <img src="images/menu-prawn.png" alt="Prawn tempura sushi roll" />
+        </div>
+        <span class="tag">House special</span>
+        <h3>Prawn Tempura Roll</h3>
+        <p>Golden tempura prawn, lettuce and a sweet eel glaze.</p>
+        <div class="roll-foot">
+          <span class="price">$10.50 <small>/ 8 pc</small></span>
+          <button class="add" aria-label="Add Prawn Tempura Roll">+</button>
+        </div>
+      </article>
+      <!-- card 5 -->
+      <article class="roll">
+        <div class="roll-art">
+          <img src="images/menu-platter.png" alt="Queen's mixed sushi sharing platter" />
+        </div>
+        <span class="tag">Sharing</span>
+        <h3>Queen's Platter</h3>
+        <p>A curated mix of 24 pieces — perfect for two to share.</p>
+        <div class="roll-foot">
+          <span class="price">$26.00 <small>/ 24 pc</small></span>
+          <button class="add" aria-label="Add Queen's Platter">+</button>
+        </div>
+      </article>
+      <!-- card 6 -->
+      <article class="roll">
+        <div class="roll-art">
+          <img src="images/menu-teriyaki.png" alt="Teriyaki chicken sushi roll" />
+        </div>
+        <span class="tag">Warm</span>
+        <h3>Teriyaki Chicken</h3>
+        <p>Grilled teriyaki chicken, sesame and shredded slaw.</p>
+        <div class="roll-foot">
+          <span class="price">$9.00 <small>/ 8 pc</small></span>
+          <button class="add" aria-label="Add Teriyaki Chicken">+</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="menu-cta">
+      <a class="btn btn-dark" href="#uber">See the full menu &amp; order</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORY SPLIT ================= -->
+<section class="pad" id="story" style="background:var(--cream-dark);">
+  <div class="wrap split">
+    <div class="split-art">
+      <img src="images/story.png" alt="A Sushi Queen chef hand-rolling fresh sushi at the counter" />
+    </div>
+    <div class="split-copy">
+      <span class="eyebrow">Our story</span>
+      <h2>A neighbourhood sushi bar, run with pride.</h2>
+      <p>Sushi Queen started as a single counter with one rule — never serve a roll we wouldn't eat ourselves. We keep the menu small so we can keep the quality high, slicing fish to order all day, every day.</p>
+      <ul class="feature-list">
+        <li><span class="check">✓</span> Rice seasoned and rolled fresh each morning</li>
+        <li><span class="check">✓</span> Premium, sustainably sourced fish</li>
+        <li><span class="check">✓</span> Gluten-free and vegetarian options always available</li>
+        <li><span class="check">✓</span> Family-owned and proudly local</li>
+      </ul>
+      <a class="btn btn-coral" href="#visit">Come say hello</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="pad steps-sec" id="how" style="padding-bottom:52px;">
+  <img class="float hide-sm" src="images/float-nigiri-salmon.png?v=2" alt="" style="--r:-12deg; top:104px; left:-26px; width:112px; animation-duration:9s;" />
+  <img class="float hide-sm" src="images/float-maki.png?v=2" alt="" style="--r:20deg; top:66px; right:6%; width:98px; animation-duration:7s; animation-delay:-3s;" />
+  <span class="crumb" style="top:150px; left:7%;"></span>
+  <span class="crumb sm" style="top:138px; left:9%;"></span>
+  <span class="crumb sm" style="top:166px; left:5.5%;"></span>
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Two easy ways to enjoy</span>
+      <h2>How it works</h2>
+      <p>Whether you're passing the shopfront or settling in at home, fresh sushi is minutes away.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>Choose your rolls</h3>
+        <p>Browse the menu in-store or on Uber Eats and build your order from our signature line-up.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>We roll it fresh</h3>
+        <p>Every piece is cut to order — never pre-packed, never frozen, always made the moment you ask.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>Pick up or get it delivered</h3>
+        <p>Collect from the counter in about 15 minutes, or let Uber Eats bring it straight to your door.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= UBER EATS BANNER ================= -->
+<section class="pad" id="uber" style="padding-top:0;">
+  <img class="float hide-sm" src="images/float-nigiri-tuna.png?v=2" alt="" style="--r:-14deg; top:14px; left:3%; width:104px; animation-duration:8s; animation-delay:-2s;" />
+  <div class="wrap">
+    <div class="uber">
+      <div class="uber-copy">
+        <span class="eyebrow" style="color:var(--teal-300);">Delivery</span>
+        <h2>Craving sushi? We deliver with Uber Eats.</h2>
+        <p>Don't feel like leaving the couch? Order Sushi Queen on Uber Eats and we'll have it rolled, boxed and on its way in no time.</p>
+        <div class="uber-actions">
+          <a class="btn btn-coral" href="#">
+            Order on Uber Eats
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#visit">Or pick up in store</a>
+        </div>
+      </div>
+      <div class="uber-art">
+        <div class="ueats-card">
+          <div class="row">
+            <span class="ueats-logo">Uber Eats</span>
+            <span class="est">15–25 min</span>
+          </div>
+          <h4>Sushi Queen</h4>
+          <div class="stars">★★★★★ <span style="color:var(--muted);">4.8 (900+)</span></div>
+          <div class="ueats-bar">Start your order →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section class="pad" id="visit" style="padding-top:0;">
+  <img class="float hide-sm" src="images/float-nigiri-salmon.png?v=2" alt="" style="--r:13deg; top:20px; right:2%; width:100px; animation-duration:8.5s;" />
+  <div class="wrap visit">
+    <div class="visit-copy">
+      <span class="eyebrow">Visit us</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,3.4vw,42px);margin:14px 0 0;">Find the counter</h2>
+      <p style="color:var(--muted);margin-top:14px;font-size:16px;">Pop in for a freshly rolled lunch or grab dinner on the way home. We're easy to find and quick to serve.</p>
+      <div class="info-line">
+        <span class="info-ico">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" stroke="#1a6058" stroke-width="2"/><circle cx="12" cy="10" r="2.5" stroke="#1a6058" stroke-width="2"/></svg>
+        </span>
+        <div><b>42 Marigold Street</b><br><span style="color:var(--muted);">Brunswick, VIC 3056</span></div>
+      </div>
+      <div class="info-line">
+        <span class="info-ico">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-3 2c1 3 4 6 7 7l2-3 5 2v4c0 1-1 2-2 2A16 16 0 013 6c0-1 1-2 2-2z" stroke="#1a6058" stroke-width="2" stroke-linejoin="round"/></svg>
+        </span>
+        <div><b>(03) 9123 4567</b><br><span style="color:var(--muted);">Call ahead for large orders</span></div>
+      </div>
+      <div class="info-line">
+        <span class="info-ico">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="#1a6058" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="#1a6058" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <div><b>hello@sushiqueen.com.au</b><br><span style="color:var(--muted);">We reply within a day</span></div>
+      </div>
+    </div>
+
+    <div class="hours-card">
+      <h3>Opening hours</h3>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:8px;">Kitchen rolls until 30 minutes before close.</p>
+      <div class="hours-row today"><span>Thursday — Today</span><span class="open" style="color:var(--teal-600);">11:00 – 20:00</span></div>
+      <div class="hours-row"><span>Monday – Wednesday</span><span class="open">11:00 – 19:00</span></div>
+      <div class="hours-row"><span>Friday – Saturday</span><span class="open">11:00 – 21:00</span></div>
+      <div class="hours-row"><span>Sunday</span><span class="open">12:00 – 18:00</span></div>
+      <a class="btn btn-coral" href="#uber" style="width:100%;justify-content:center;margin-top:22px;">Order now on Uber Eats</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <img class="float" src="images/float-maki.png?v=2" alt="" style="--r:10deg; top:-44px; right:9%; width:120px; animation-duration:8s; animation-delay:-1s;" />
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a class="logo" href="#">
+          <span class="logo-mark">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9l4 4 5-8 5 8 4-4-2 11H5L3 9z" fill="#07221f"/></svg>
+          </span>
+          <span class="logo-text">Sushi <span>Queen</span></span>
+        </a>
+        <p>Freshly rolled takeaway sushi, made with care in Brunswick. Pick up at the counter or order in for delivery.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#visit">Visit Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Order</h5>
+        <ul>
+          <li><a href="#uber">Uber Eats Delivery</a></li>
+          <li><a href="#visit">Counter Pickup</a></li>
+          <li><a href="#visit">Catering &amp; Platters</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Get in touch</h5>
+        <ul>
+          <li><a href="#">42 Marigold Street</a></li>
+          <li><a href="#">(03) 9123 4567</a></li>
+          <li><a href="#">hello@sushiqueen.com.au</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Sushi Queen. All rights reserved.</span>
+      <span>Privacy Policy · Terms of Service</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
