@@ -9,18 +9,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --teal-900: #07221f;
-    --teal-800: #0c302c;
-    --teal-700: #114038;
-    --teal-600: #1a6058;
-    --teal-500: #2a9d8f;
-    --teal-300: #7fc9bf;
+    --pink-900: #2b0a21;
+    --pink-800: #3c1230;
+    --pink-700: #531a41;
+    --pink-600: #7c2f60;
+    --pink-500: #c44d97;
+    --pink-300: #fad2ee;
     --coral: #ff6f4d;
     --coral-dark: #e85733;
     --cream: #f7f1e6;
-    --cream-dark: #ece2cf;
-    --ink: #16302c;
-    --muted: #5f726e;
+    --cream-dark: #ebdfe4;
+    --ink: #2a1322;
+    --muted: #6f5d68;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -84,24 +84,24 @@
   }
   .btn-ghost:hover { border-color: var(--cream); transform: translateY(-2px); }
   .btn-dark {
-    background: var(--teal-800);
+    background: var(--pink-800);
     color: var(--cream);
   }
-  .btn-dark:hover { transform: translateY(-2px); background: var(--teal-700); }
+  .btn-dark:hover { transform: translateY(-2px); background: var(--pink-700); }
 
   /* ---------- Nav ---------- */
   header {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(7,34,31,.92);
+    background: rgba(43,10,33,.92);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(127,201,191,.14);
+    border-bottom: 1px solid rgba(250,210,238,.14);
   }
   nav { display: flex; align-items: center; justify-content: space-between; height: 78px; }
   .logo { display: flex; align-items: center; gap: 11px; }
   .logo-mark {
     width: 38px; height: 38px;
     display: grid; place-items: center;
-    background: var(--teal-500);
+    background: var(--pink-500);
     border-radius: 11px;
   }
   .logo-text {
@@ -110,7 +110,7 @@
     color: var(--cream);
     letter-spacing: .2px;
   }
-  .logo-text span { color: var(--teal-300); }
+  .logo-text span { color: var(--pink-300); }
   .nav-links { display: flex; gap: 34px; list-style: none; }
   .nav-links a {
     color: rgba(247,241,230,.78);
@@ -119,14 +119,14 @@
   }
   .nav-links a:hover { color: var(--cream); }
   .nav-cta { display: flex; align-items: center; gap: 16px; }
-  .nav-phone { color: var(--teal-300); font-weight: 600; font-size: 14.5px; }
+  .nav-phone { color: var(--pink-300); font-weight: 600; font-size: 14.5px; }
 
   /* ---------- Hero ---------- */
   .hero {
     background:
-      radial-gradient(900px 520px at 78% -8%, rgba(42,157,143,.30), transparent 60%),
+      radial-gradient(900px 520px at 78% -8%, rgba(196,77,151,.30), transparent 60%),
       radial-gradient(700px 480px at 8% 105%, rgba(255,111,77,.14), transparent 55%),
-      var(--teal-900);
+      var(--pink-900);
     position: relative;
     overflow: hidden;
   }
@@ -137,7 +137,7 @@
     align-items: center;
     padding: 76px 32px 96px;
   }
-  .hero .eyebrow { color: var(--teal-300); }
+  .hero .eyebrow { color: var(--pink-300); }
   .hero h1 {
     color: var(--cream);
     font-size: clamp(34px, 4.2vw, 54px);
@@ -155,7 +155,7 @@
   .hero-meta {
     display: flex; gap: 30px; margin-top: 38px;
     padding-top: 28px;
-    border-top: 1px solid rgba(127,201,191,.16);
+    border-top: 1px solid rgba(250,210,238,.16);
   }
   .hero-meta div { color: var(--cream); }
   .hero-meta strong {
@@ -169,10 +169,10 @@
   .platter {
     width: 100%; max-width: 420px;
     aspect-ratio: 1;
-    background: radial-gradient(circle at 50% 42%, #16463f 0%, #0c302c 70%);
+    background: radial-gradient(circle at 50% 42%, #5a1f49 0%, #2b0a21 70%);
     border-radius: 50%;
-    border: 1px solid rgba(127,201,191,.2);
-    box-shadow: 0 40px 80px -30px rgba(0,0,0,.7), inset 0 2px 30px rgba(127,201,191,.08);
+    border: 1px solid rgba(250,210,238,.2);
+    box-shadow: 0 40px 80px -30px rgba(0,0,0,.7), inset 0 2px 30px rgba(250,210,238,.08);
     display: grid; place-items: center;
     position: relative;
   }
@@ -233,33 +233,33 @@
   .badge-float .dot {
     width: 34px; height: 34px; border-radius: 9px;
     display: grid; place-items: center;
-    background: var(--teal-500); color: #fff; font-weight: 700;
+    background: var(--pink-500); color: var(--pink-900); font-weight: 700;
   }
-  .badge-float .dot.coral { background: var(--coral); }
+  .badge-float .dot.coral { background: var(--coral); color: #fff; }
   .badge-float b { font-size: 14px; display: block; }
   .badge-float small { color: var(--muted); font-size: 12px; }
 
   /* ---------- Strip ---------- */
   .strip {
-    background: var(--teal-800);
+    background: var(--pink-800);
     padding: 0;
     position: relative;
   }
   .strip-inner {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid rgba(127,201,191,.12);
+    border-top: 1px solid rgba(250,210,238,.12);
   }
   .strip-item {
     display: flex; gap: 16px; align-items: center;
     padding: 30px 28px;
     color: var(--cream);
   }
-  .strip-item + .strip-item { border-left: 1px solid rgba(127,201,191,.12); }
+  .strip-item + .strip-item { border-left: 1px solid rgba(250,210,238,.12); }
   .strip-ico {
     width: 46px; height: 46px; flex: none;
     border-radius: 12px;
-    background: rgba(42,157,143,.18);
+    background: rgba(196,77,151,.18);
     display: grid; place-items: center;
   }
   .strip-item b { font-size: 15px; }
@@ -309,7 +309,7 @@
   .roll:hover .roll-art img { transform: scale(1.07); }
   .roll .tag {
     font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--teal-500); font-weight: 700;
+    color: var(--pink-600); font-weight: 700;
   }
   .roll h3 { font-size: 21px; margin: 7px 0 6px; }
   .roll p { font-size: 14px; color: var(--muted); min-height: 42px; }
@@ -322,7 +322,7 @@
   .price small { font-size: 13px; color: var(--muted); font-weight: 400; }
   .add {
     width: 40px; height: 40px; border-radius: 11px;
-    background: var(--teal-700); color: #fff;
+    background: var(--pink-700); color: #fff;
     display: grid; place-items: center; border: none; cursor: pointer;
     transition: background .15s, transform .15s;
   }
@@ -337,7 +337,7 @@
     align-items: center;
   }
   .split-art {
-    background: var(--teal-700);
+    background: var(--pink-700);
     border-radius: 26px;
     aspect-ratio: 1.05;
     display: grid; place-items: center;
@@ -347,7 +347,7 @@
   .split-art::before {
     content: "";
     position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(160deg, rgba(7,34,31,.10), rgba(7,34,31,.45));
+    background: linear-gradient(160deg, rgba(43,10,33,.10), rgba(43,10,33,.45));
   }
   .split-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .split h2 { font-size: clamp(28px, 3.4vw, 42px); margin: 14px 0 0; }
@@ -356,13 +356,13 @@
   .feature-list li { display: flex; gap: 13px; align-items: flex-start; font-size: 15px; }
   .check {
     width: 24px; height: 24px; flex: none; border-radius: 7px;
-    background: rgba(42,157,143,.16); color: var(--teal-600);
+    background: rgba(196,77,151,.16); color: var(--pink-600);
     display: grid; place-items: center; font-weight: 700; font-size: 13px;
   }
 
   /* ---------- Steps ---------- */
-  .steps-sec { background: var(--teal-900); }
-  .steps-sec .eyebrow { color: var(--teal-300); }
+  .steps-sec { background: var(--pink-900); }
+  .steps-sec .eyebrow { color: var(--pink-300); }
   .steps-sec .sec-head h2 { color: var(--cream); }
   .steps-sec .sec-head p { color: rgba(247,241,230,.66); }
   .steps {
@@ -370,8 +370,8 @@
     margin-top: 54px;
   }
   .step {
-    background: var(--teal-800);
-    border: 1px solid rgba(127,201,191,.14);
+    background: var(--pink-800);
+    border: 1px solid rgba(250,210,238,.14);
     border-radius: 20px;
     padding: 34px 30px;
   }
@@ -379,7 +379,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 17px; font-weight: 700;
     width: 44px; height: 44px; border-radius: 12px;
-    background: var(--teal-500); color: #fff;
+    background: var(--pink-500); color: var(--pink-900);
     display: grid; place-items: center;
   }
   .step h3 { color: var(--cream); font-size: 22px; margin: 20px 0 8px; }
@@ -387,7 +387,7 @@
 
   /* ---------- Uber Eats banner ---------- */
   .uber {
-    background: linear-gradient(120deg, var(--teal-600), var(--teal-700));
+    background: linear-gradient(120deg, var(--pink-600), var(--pink-700));
     border-radius: 28px;
     padding: 56px;
     display: grid;
@@ -416,7 +416,7 @@
   }
   .ueats-card .row { display: flex; align-items: center; gap: 12px; }
   .ueats-logo {
-    background: #06241f; color: #fff; font-weight: 700;
+    background: #2b0a21; color: #fff; font-weight: 700;
     padding: 6px 12px; border-radius: 8px; font-size: 13px;
   }
   .ueats-card .est { margin-left: auto; font-size: 13px; color: var(--muted); }
@@ -424,7 +424,7 @@
   .ueats-card .stars { color: var(--coral); font-size: 14px; }
   .ueats-bar {
     margin-top: 16px; height: 42px; border-radius: 10px;
-    background: var(--teal-700); color: #fff;
+    background: var(--pink-700); color: #fff;
     display: grid; place-items: center; font-weight: 600; font-size: 14px;
   }
 
@@ -441,21 +441,21 @@
     font-size: 14.5px;
   }
   .hours-row:last-child { border-bottom: none; }
-  .hours-row.today { color: var(--teal-600); font-weight: 700; }
-  .hours-row .open { color: var(--teal-500); font-weight: 600; }
+  .hours-row.today { color: var(--pink-600); font-weight: 700; }
+  .hours-row .open { color: var(--pink-600); font-weight: 600; }
   .visit .info-line {
     display: flex; gap: 13px; align-items: flex-start;
     margin-top: 18px; font-size: 15px;
   }
   .visit .info-ico {
     width: 38px; height: 38px; flex: none; border-radius: 10px;
-    background: rgba(42,157,143,.14); color: var(--teal-600);
+    background: rgba(196,77,151,.14); color: var(--pink-600);
     display: grid; place-items: center;
   }
 
   /* ---------- Footer ---------- */
   footer {
-    background: var(--teal-900);
+    background: var(--pink-900);
     color: rgba(247,241,230,.7);
     padding: 70px 0 34px;
     position: relative;
@@ -463,7 +463,7 @@
   .foot-grid {
     display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px;
     padding-bottom: 46px;
-    border-bottom: 1px solid rgba(127,201,191,.14);
+    border-bottom: 1px solid rgba(250,210,238,.14);
   }
   footer h5 {
     color: var(--cream); font-size: 13px; letter-spacing: .12em;
@@ -483,7 +483,7 @@
   @media (max-width: 940px) {
     .hero-inner, .split, .visit, .uber { grid-template-columns: 1fr; }
     .menu-grid, .steps, .strip-inner { grid-template-columns: 1fr; }
-    .strip-item + .strip-item { border-left: none; border-top: 1px solid rgba(127,201,191,.12); }
+    .strip-item + .strip-item { border-left: none; border-top: 1px solid rgba(250,210,238,.12); }
     .foot-grid { grid-template-columns: 1fr 1fr; }
     .nav-links { display: none; }
     .hero-art { order: -1; }
@@ -505,7 +505,7 @@
       <a class="logo" href="#">
         <span class="logo-mark">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M3 9l4 4 5-8 5 8 4-4-2 11H5L3 9z" fill="#07221f"/>
+            <path d="M3 9l4 4 5-8 5 8 4-4-2 11H5L3 9z" fill="#2b0a21"/>
           </svg>
         </span>
         <span class="logo-text">Sushi <span>Queen</span></span>
@@ -547,16 +547,16 @@
     <div class="hero-art">
       <!-- bamboo leaves -->
       <svg class="leaf leaf-1" width="120" height="90" viewBox="0 0 120 90" fill="none">
-        <path d="M10 80C30 50 70 22 116 8c-22 30-52 58-92 76-6 2-12-1-14-4z" fill="#2a9d8f"/>
-        <path d="M14 78C40 56 78 32 110 14" stroke="#1a6058" stroke-width="2"/>
+        <path d="M10 80C30 50 70 22 116 8c-22 30-52 58-92 76-6 2-12-1-14-4z" fill="#c44d97"/>
+        <path d="M14 78C40 56 78 32 110 14" stroke="#7c2f60" stroke-width="2"/>
       </svg>
       <svg class="leaf leaf-2" width="130" height="96" viewBox="0 0 130 96" fill="none">
-        <path d="M12 86C34 54 78 24 126 10c-24 32-58 62-100 80-7 3-12 0-14-4z" fill="#3bb3a4"/>
-        <path d="M16 84C44 60 84 34 118 16" stroke="#1a6058" stroke-width="2"/>
+        <path d="M12 86C34 54 78 24 126 10c-24 32-58 62-100 80-7 3-12 0-14-4z" fill="#db7bb6"/>
+        <path d="M16 84C44 60 84 34 118 16" stroke="#7c2f60" stroke-width="2"/>
       </svg>
 
       <div class="platter">
-        <img src="images/hero.png" alt="An assorted platter of freshly made Sushi Queen sushi" />
+        <img src="images/hero.png?v=2" alt="An assorted platter of freshly made Sushi Queen sushi" />
       </div>
 
       <div class="badge-float tl">
@@ -578,19 +578,19 @@
     <div class="strip-inner">
       <div class="strip-item">
         <span class="strip-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7" stroke="#7fc9bf" stroke-width="2" stroke-linejoin="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7" stroke="#fad2ee" stroke-width="2" stroke-linejoin="round"/></svg>
         </span>
         <div><b>Quick counter pickup</b><p>Ready in around 15 minutes</p></div>
       </div>
       <div class="strip-item">
         <span class="strip-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 13h11V6H3v7zm11 0h4l3 4v3h-2M14 17H6" stroke="#7fc9bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="18" r="2" stroke="#7fc9bf" stroke-width="2"/><circle cx="18" cy="18" r="2" stroke="#7fc9bf" stroke-width="2"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 13h11V6H3v7zm11 0h4l3 4v3h-2M14 17H6" stroke="#fad2ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="18" r="2" stroke="#fad2ee" stroke-width="2"/><circle cx="18" cy="18" r="2" stroke="#fad2ee" stroke-width="2"/></svg>
         </span>
         <div><b>Delivered via Uber Eats</b><p>Hot-fast to your door</p></div>
       </div>
       <div class="strip-item">
         <span class="strip-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8c0-3 3-5 7-5M5 8c0 4 3 6 7 6M19 8c0-3-3-5-7-5M19 8c0 4-3 6-7 6" stroke="#7fc9bf" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8c0-3 3-5 7-5M5 8c0 4 3 6 7 6M19 8c0-3-3-5-7-5M19 8c0 4-3 6-7 6" stroke="#fad2ee" stroke-width="2" stroke-linecap="round"/></svg>
         </span>
         <div><b>Locally sourced fish</b><p>Sustainable, premium grade</p></div>
       </div>
@@ -700,7 +700,7 @@
 </section>
 
 <!-- ================= STORY SPLIT ================= -->
-<section class="pad" id="story" style="background:var(--cream-dark);">
+<section class="pad" id="story" style="background:#fad2ee;">
   <div class="wrap split">
     <div class="split-art">
       <img src="images/story.png" alt="A Sushi Queen chef hand-rolling fresh sushi at the counter" />
@@ -759,7 +759,7 @@
   <div class="wrap">
     <div class="uber">
       <div class="uber-copy">
-        <span class="eyebrow" style="color:var(--teal-300);">Delivery</span>
+        <span class="eyebrow" style="color:var(--pink-300);">Delivery</span>
         <h2>Craving sushi? We deliver with Uber Eats.</h2>
         <p>Don't feel like leaving the couch? Order Sushi Queen on Uber Eats and we'll have it rolled, boxed and on its way in no time.</p>
         <div class="uber-actions">
@@ -795,19 +795,19 @@
       <p style="color:var(--muted);margin-top:14px;font-size:16px;">Pop in for a freshly rolled lunch or grab dinner on the way home. We're easy to find and quick to serve.</p>
       <div class="info-line">
         <span class="info-ico">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" stroke="#1a6058" stroke-width="2"/><circle cx="12" cy="10" r="2.5" stroke="#1a6058" stroke-width="2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" stroke="#7c2f60" stroke-width="2"/><circle cx="12" cy="10" r="2.5" stroke="#7c2f60" stroke-width="2"/></svg>
         </span>
         <div><b>42 Marigold Street</b><br><span style="color:var(--muted);">Brunswick, VIC 3056</span></div>
       </div>
       <div class="info-line">
         <span class="info-ico">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-3 2c1 3 4 6 7 7l2-3 5 2v4c0 1-1 2-2 2A16 16 0 013 6c0-1 1-2 2-2z" stroke="#1a6058" stroke-width="2" stroke-linejoin="round"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-3 2c1 3 4 6 7 7l2-3 5 2v4c0 1-1 2-2 2A16 16 0 013 6c0-1 1-2 2-2z" stroke="#7c2f60" stroke-width="2" stroke-linejoin="round"/></svg>
         </span>
         <div><b>(03) 9123 4567</b><br><span style="color:var(--muted);">Call ahead for large orders</span></div>
       </div>
       <div class="info-line">
         <span class="info-ico">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="#1a6058" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="#1a6058" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="#7c2f60" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="#7c2f60" stroke-width="2" stroke-linecap="round"/></svg>
         </span>
         <div><b>hello@sushiqueen.com.au</b><br><span style="color:var(--muted);">We reply within a day</span></div>
       </div>
@@ -816,7 +816,7 @@
     <div class="hours-card">
       <h3>Opening hours</h3>
       <p style="color:var(--muted);font-size:14px;margin-bottom:8px;">Kitchen rolls until 30 minutes before close.</p>
-      <div class="hours-row today"><span>Thursday — Today</span><span class="open" style="color:var(--teal-600);">11:00 – 20:00</span></div>
+      <div class="hours-row today"><span>Thursday — Today</span><span class="open" style="color:var(--pink-600);">11:00 – 20:00</span></div>
       <div class="hours-row"><span>Monday – Wednesday</span><span class="open">11:00 – 19:00</span></div>
       <div class="hours-row"><span>Friday – Saturday</span><span class="open">11:00 – 21:00</span></div>
       <div class="hours-row"><span>Sunday</span><span class="open">12:00 – 18:00</span></div>
@@ -833,7 +833,7 @@
       <div class="foot-about">
         <a class="logo" href="#">
           <span class="logo-mark">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9l4 4 5-8 5 8 4-4-2 11H5L3 9z" fill="#07221f"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9l4 4 5-8 5 8 4-4-2 11H5L3 9z" fill="#2b0a21"/></svg>
           </span>
           <span class="logo-text">Sushi <span>Queen</span></span>
         </a>
